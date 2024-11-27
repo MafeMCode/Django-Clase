@@ -8,16 +8,8 @@
 <body>
     <h1>Bienvenidos a mi Blog</h1>
     <h2>Lista de Posts</h2>
-    <ul>
-        {% for post in posts %}
-                <li>{{post.titulo}}</li>
-            {% endfor %}
-    </ul>
-    <h2>Lista de Autores</h2>
-    <ul>
-        {% for autor in autores %}
-                <li>{{autor}}</li>
-            {% endfor %}
-    </ul>
+    <p>Post: {{post.titulo}}</p>
+    <p>Autor: {{post.autor}}</p>
+    <p>Cuerpo: {{post.cuerpo}}</p>
 </body>
 </html>
