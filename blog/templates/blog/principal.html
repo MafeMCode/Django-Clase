@@ -10,7 +10,7 @@
     <h2>Lista de Posts</h2>
     <ul>
         {% for post in posts %}
-                <li>{{post.titulo}}</li>
+                <li><a href="{% url 'detalle_post' pk=post.pk%}">{{post.titulo}}</a></li>
             {% endfor %}
     </ul>
     <h2>Lista de Autores</h2>
