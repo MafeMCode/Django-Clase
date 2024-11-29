@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenidos a mi Blog</title>
-</head>
-<body>
-    <h1>Bienvenidos a mi Blog</h1>
-    <h2>Lista de Posts</h2>
+{%extends 'blog/base.html'%}
+{% block contenido %}
+<h2>Lista de Posts</h2>
     <ul>
         {% for post in posts %}
                 <li><a href="{% url 'detalle_post' pk=post.pk%}">{{post.titulo}}</a></li>
@@ -16,8 +9,7 @@
     <h2>Lista de Autores</h2>
     <ul>
         {% for autor in autores %}
-                <li>{{autor}}</li>
-            {% endfor %}
+        <li><a href="{% url 'detalle_autor' pk=autor.pk%}">{{autor.nombre}}</a></li>
+        {% endfor %}
     </ul>
-</body>
-</html>
+{% endblock %}

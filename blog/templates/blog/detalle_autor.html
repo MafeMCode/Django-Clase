@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenidos a mi Blog</title>
+</head>
+<body>
+    <h1>Bienvenidos a mi Blog</h1>
+    <p>Autor: {{autor.nombre}} {{autor.apellidos}}</p>
+
+    <p>Posts del autor</p>
+    <ul>
+        {% for post in posts %}
+            {% if post.autor.nombre == autor.nombre %}
+                <li>{{post.titulo}}</li>
+            {% endif %}
+        {% endfor %}
+
+    </ul>
+</body>
+</html>
