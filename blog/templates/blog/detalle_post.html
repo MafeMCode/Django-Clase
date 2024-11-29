@@ -3,14 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenidos a mi Blog</title>
+    <title>Detalles del post {{post.pk}} </title>
+    <style>
+        #volver {
+            display: inline-block; /* Para que se comporte como un botón */
+            background-color: #87CEFA; /* Azul claro */
+            color: black; /* Color del texto */
+            text-decoration: none; /* Quitar el subrayado del enlace */
+            padding: 10px 20px; /* Espaciado interno */
+            border-radius: 8px; /* Bordes redondeados */
+            font-size: 16px; /* Tamaño de letra */
+            font-family: Arial, sans-serif; /* Fuente */
+            text-align: center; /* Centrar el texto */
+            transition: background-color 0.3s ease; /* Efecto suave al cambiar color */
+        }
+
+        #volver:hover {
+            background-color: #4682B4; /* Azul más oscuro al pasar el cursor */
+        }
+
+    </style>
 </head>
 <body>
-    <h1>Bienvenidos a mi Blog</h1>
-    <h2>Lista de Posts</h2>
+    <h1>Detalles del post</h1>
     <p>Post: {{post.titulo}}</p>
     <p>Autor: {{post.autor}}</p>
     <p>Cuerpo: {{post.cuerpo}}</p>
 
 </body>
+
+<footer>
+
+    <a id="volver" href="{% url 'principal' %}">Volver a Principal</a>
+
+</footer>
+
 </html>

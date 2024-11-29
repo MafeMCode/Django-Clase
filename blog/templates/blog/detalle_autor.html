@@ -3,20 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenidos a mi Blog</title>
+    <title>Detalles de {{autor.nombre}} {{autor.apellidos}}</title>
+    <style>
+        #volver {
+            display: inline-block; /* Para que se comporte como un botón */
+            background-color: #87CEFA; /* Azul claro */
+            color: black; /* Color del texto */
+            text-decoration: none; /* Quitar el subrayado del enlace */
+            padding: 10px 20px; /* Espaciado interno */
+            border-radius: 8px; /* Bordes redondeados */
+            font-size: 16px; /* Tamaño de letra */
+            font-family: Arial, sans-serif; /* Fuente */
+            text-align: center; /* Centrar el texto */
+            transition: background-color 0.3s ease; /* Efecto suave al cambiar color */
+        }
+
+        #volver:hover {
+            background-color: #4682B4; /* Azul más oscuro al pasar el cursor */
+        }
+
+    </style>
 </head>
 <body>
-    <h1>Bienvenidos a mi Blog</h1>
+    <h1 >Detalles del Autor</h1>
     <p>Autor: {{autor.nombre}} {{autor.apellidos}}</p>
 
     <p>Posts del autor</p>
     <ul>
         {% for post in posts %}
-            {% if post.autor.nombre == autor.nombre %}
-                <li>{{post.titulo}}</li>
-            {% endif %}
+        <li><a href="{% url 'detalle_post' pk=post.pk%}">{{post.titulo}}</a></li>
         {% endfor %}
 
     </ul>
 </body>
+<footer>
+
+    <a id="volver" href="{% url 'principal' %}">Volver a Principal</a>
+
+</footer>
 </html>

@@ -13,6 +13,6 @@ def detalle_post(request, pk):
     return render(request, 'blog/detalle_post.html', {'post':post})
 
 def detalle_autor(request, pk):
-    posts = Post.objects.all()
     autor = get_object_or_404(Autor, pk=pk)
-    return render(request, 'blog/detalle_autor.html', {'autor':autor, 'posts':posts})
+    post = Post.objects.filter(pk=autor.pk) #Añadir aqui el filtro
+    return render(request, 'blog/detalle_autor.html', {'autor':autor, 'posts':post})
