@@ -9,9 +9,18 @@ class post_form (forms.Form):
     autor = forms.ModelChoiceField(Autor.objects.all(), label="Autor")
     
 class post_form_model(forms.ModelForm):
+    fpublicado = forms.DateField(label='Fecha de publicación',
+                                     input_formats=['%d/%m/%y', '%y-%m-%d'],
+                                     widget=forms.DateInput(attrs={
+                                         'class': 'form-control',
+                                         'placeholder' : 'dd/mm/yyyy',
+                                         'type':'date'
+                                     }))    
     class Meta:
         model = Post
-        fields = ["titulo", "cuerpo", "fpublicacion", "autor"]
-        widgets = {
-            'fpublicacion': AdminDateWidget(),
-        }
+        fields = ["titulo", "cuerpo", "autor"]
+        
+class post_form_Model_Artista(forms.ModelForm):
+    class Meta:
+        model = Autor
+        fields = ['nombre', 'apellidos', 'email', 'dni', 'bio']

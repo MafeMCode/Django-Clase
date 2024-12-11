@@ -38,7 +38,9 @@
 </body>
 <footer>
 
-    <a id="volver" href="{% url 'principal' %}">Volver a Principal</a>
+    <a id="volver" href="{% url 'autores' %}">Volver a Autores</a>
+
+    <a id="editar" href="{% url 'autor_edit' pk=autor.pk %}">Editar Autor</a>
 
 </footer>
 </html>

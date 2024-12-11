@@ -1,0 +1,15 @@
+{%extends 'blog/base.html'%}
+{% block contenido %}
+    <h2>Lista de Autores</h2>
+    <ul>
+        {% for autor in autores %}
+        <li><a href="{% url 'detalle_autor' pk=autor.pk%}">{{autor.nombre}}</a></li>
+        {% endfor %}
+    </ul>
+
+    <footer>
+
+        <a id="crear"  href="{% url 'autor_new' %}">Crear Autor</a>
+
+    </footer>
+{% endblock %}

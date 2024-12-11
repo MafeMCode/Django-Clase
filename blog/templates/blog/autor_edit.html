@@ -1,0 +1,20 @@
+{%extends 'blog/base.html'%}
+{% block contenido %}
+
+    <h2>Editar Autor {{autor.nombre}}</h2>
+
+    <form action="" method="POST">
+
+        {% csrf_token %}
+
+        {{form}}
+
+        <input type="submit" value="Actualizar">
+
+    </form>
+
+    {% block confirmacion %}{% endblock %}
+
+    
+
+{% endblock %}

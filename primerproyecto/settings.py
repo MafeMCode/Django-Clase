@@ -29,7 +29,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 # DATE FORMATTER
 
-DATE_INPUT_FORMATS = ['%d-%m-%Y']
+DATE_INPUT_FORMATS = ['%d/%m/%Y', '%y-%m-%d']
 
 
 # Application definition
