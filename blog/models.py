@@ -17,10 +17,13 @@ class Autor(models.Model):
         return self.nombre
     
 class Post(models.Model):
-    titulo = models.CharField(max_length=200)
-    autor = models.ForeignKey(Autor, on_delete=models.CASCADE)
-    cuerpo = models.TextField()
-    fpublicacion = models.DateField(default='2024-07-22')
+    titulo = models.CharField(max_length=200, verbose_name="Título")
+    autor = models.ForeignKey(Autor, on_delete=models.CASCADE, verbose_name="Autor")
+    cuerpo = models.TextField(verbose_name="Cuerpo")
+    fpublicacion = models.DateField(default='2024-07-22', verbose_name="Fecha de publicación")
+    
+    class Meta:
+        verbose_name_plural = "Posts"
     
     def __str__(self):
         return self.titulo

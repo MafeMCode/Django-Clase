@@ -1,0 +1,20 @@
+{%extends 'blog/base.html'%}
+{% block contenido %}
+
+    <h2>Nuevo Post</h2>
+
+    <form action="" method="POST">
+
+        {% csrf_token %}
+
+        {{form}}
+
+        <input type="submit" value="Crear">
+
+    </form>
+
+    {% block confirmacion %}{% endblock %}
+
+    
+
+{% endblock %}
