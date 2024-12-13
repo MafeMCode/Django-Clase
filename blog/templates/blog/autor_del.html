@@ -1,0 +1,17 @@
+{%extends 'blog/base.html'%}
+{% block contenido %}
+
+    <h2>¿Está seguro de querer eliminar a {{autor.nombre}} {{autor.apellidos}}?</h2>
+
+    <form action="" method="POST">
+
+        {% csrf_token %}
+
+        <input type="submit" value="Eliminar">
+
+    </form>
+
+
+    
+
+{% endblock %}

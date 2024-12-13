@@ -13,7 +13,7 @@ def post_new(request):
             ftitulo = form.cleaned_data["titulo"]  
             fcuerpo = form.cleaned_data["cuerpo"]  
             fpublicado = form.cleaned_data["fpublicado"]
-            fautor = Autor.objects.get(id=1)
+            fautor = Autor.objects.get(id=5)
             Post.objects.create(titulo=ftitulo, cuerpo=fcuerpo, autor=fautor, fpublicacion=fpublicado)  
             return render(request, 'blog/post_new_added.html', {"form":post_form()})
     else:
@@ -54,8 +54,9 @@ def detalle_post(request, pk):
 
 def detalle_autor(request, pk):
     autor = get_object_or_404(Autor, pk=pk)
-    post = Post.objects.filter(pk=autor.pk) 
-    return render(request, 'blog/detalle_autor.html', {'autor':autor, 'posts':post})
+    post = Post.objects.filter(pk=autor.pk)
+    form = post_form_Model_Artista(initial=autor.__dict__)  
+    return render(request, 'blog/detalle_autor.html', {'autor':autor, 'posts':post, "form":form})
 
 def autor_new(request):
     if request.method == "POST":  
@@ -66,8 +67,9 @@ def autor_new(request):
             femail = form.cleaned_data["email"]
             fdni = form.cleaned_data["dni"]
             fbio = form.cleaned_data["bio"]
-            Autor.objects.create(nombre=fnombre, apellidos=fapellidos, email=femail, dni=fdni, bio=fbio)  
-            return render(request, 'blog/autores.html')
+            Autor.objects.create(nombre=fnombre, apellidos=fapellidos, email=femail, dni=fdni, bio=fbio)
+            autores = Autor.objects.all()
+            return render(request, 'blog/autores.html', {"autores": autores})
     else:
         form = post_form_Model_Artista()
         
@@ -78,13 +80,22 @@ def autor_edit(request, pk):
     if request.method == "POST":
         form = post_form_Model_Artista(request.POST, instance=autor)
         if form.is_valid():
-            autor.nombre = form.cleaned_data["nombre"]
-            autor.apellidos = form.cleaned_data["apellidos"]
-            autor.email = form.cleaned_data["email"]
-            autor.dni = form.cleaned_data["dni"]
-            autor.bio = form.cleaned_data["bio"]
+            # autor.nombre = form.cleaned_data["nombre"]
+            # autor.apellidos = form.cleaned_data["apellidos"]
+            # autor.email = form.cleaned_data["email"]
+            # autor.dni = form.cleaned_data["dni"]
+            # autor.bio = form.cleaned_data["bio"]
             form.save()
             return redirect('autores')
     else:
         form = post_form_Model_Artista(initial=autor.__dict__) 
     return render(request, 'blog/autor_edit.html', {"autor":autor, "form":form})
+
+def autor_del(request, pk):
+    autor = get_object_or_404(Autor, pk=pk)
+    if request.method == 'POST':
+        Autor.objects.get(pk=autor.pk).delete()
+        autores = Autor.objects.all()
+        return render(request, 'blog/autores.html', {"autores": autores})
+    else:
+        return render(request, 'blog/autor_del.html', {"autor":autor})

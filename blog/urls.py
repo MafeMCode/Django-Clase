@@ -10,6 +10,7 @@ urlpatterns = [
     path('autores/n', views.autor_new, name="autor_new"),
     path('post_edit_<int:pk>', views.post_edit, name="post_edit"),
     path('autores/e/<int:pk>', views.autor_edit, name="autor_edit"),
+    path('autores/d/<int:pk>', views.autor_del, name="autor_del"),
     path('post/model', views.post_new_model, name="postnewmodel"),
     
 ]

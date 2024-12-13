@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalles de {{autor.nombre}} {{autor.apellidos}}</title>
     <style>
-        #volver {
+        #volver, #editar, #eliminar {
             display: inline-block; /* Para que se comporte como un botón */
             background-color: #87CEFA; /* Azul claro */
             color: black; /* Color del texto */
@@ -18,18 +18,20 @@
             transition: background-color 0.3s ease; /* Efecto suave al cambiar color */
         }
 
-        #volver:hover {
+        #volver:hover, #editar:hover, #eliminar:hover {
             background-color: #4682B4; /* Azul más oscuro al pasar el cursor */
         }
 
     </style>
 </head>
 <body>
-    <h1 >Detalles del Autor</h1>
-    <p>Autor: {{autor.nombre}} {{autor.apellidos}}</p>
-    <p>DNI: {{autor.dni}}</p>
-    <p>Email: {{autor.email}}</p>
-    <p>Bio: {{autor.bio}}</p>
+    <form action="" method="GET" disabled>
+
+        {% csrf_token %}
+
+        {{form}}
+
+    </form>
 
     <p>Posts del autor</p>
     <ul>
@@ -44,6 +46,8 @@
     <a id="volver" href="{% url 'autores' %}">Volver a Autores</a>
 
     <a id="editar" href="{% url 'autor_edit' pk=autor.pk %}">Editar Autor</a>
+
+    <a id="eliminar" href="{% url 'autor_del' pk=autor.pk %}">Eliminar Autor</a>
 
 </footer>
 </html>
